@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- icon -->
+    <link
+      rel="shortcut icon"
+      href="assets/img/favicon.ico"
+      type="image/x-icon"
+    />
+
+    <title>Sistem Pakar Ibu Hamil - Puskesmas Ponre</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link href="assets/css/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav
+      class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top"
+    >
+      <div class="container">
+        <a
+          class="navbar-brand d-flex align-items-center gap-2"
+          href="index.html"
+        >
+          <img
+            src="assets/img/logo.png"
+            alt="Puskesmas Ponre"
+            class="logo-img"
+          />
+          <span class="fw-bold text-primary">SiKonsultasiBumil</span>
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#mainNav"
+          aria-controls="mainNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNav">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" href="#home">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#tentang">Tentang</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#panduan">Panduan</a>
+            </li>
+            <li class="nav-item">
+              <a class="btn btn-primary ms-lg-3" href="login.html"
+                ><i class="bi bi-box-arrow-in-right me-1"></i> Login</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <section id="home" class="py-5 bg-light hero-section">
+      <div class="container py-4">
+        <div class="row align-items-center g-4">
+          <div class="col-lg-6">
+            <h1 class="display-5 fw-bold text-primary">
+              Sistem Pakar Konsultasi Kesehatan Ibu Hamil - Puskesmas Ponre
+            </h1>
+            <p class="lead text-secondary mt-3">
+              Bantuan diagnosa awal dan saran cepat terkait kondisi kehamilan
+              Anda. Mudah digunakan, cepat, dan terpercaya oleh Puskesmas Ponre.
+            </p>
+            <div class="d-flex gap-2 mt-3">
+              <a href="login.html" class="btn btn-primary btn-lg"
+                ><i class="bi bi-rocket-takeoff me-2"></i>Mulai Konsultasi</a
+              >
+              <a href="#tentang" class="btn btn-outline-primary btn-lg"
+                >Pelajari Sistem</a
+              >
+            </div>
+          </div>
+          <div class="col-lg-6 text-center">
+            <div
+              class="hero-image rounded-4 shadow-sm border"
+              role="img"
+              aria-label="Ilustrasi ibu hamil"
+            >
+              <img
+                src="assets/img/hero.png"
+                alt="Ilustrasi ibu hamil"
+                class="img-fluid"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tentang -->
+    <section id="tentang" class="py-5">
+      <div class="container">
+        <div class="row mb-4">
+          <div class="col-lg-8">
+            <h2 class="fw-bold">Tentang Sistem</h2>
+            <p class="text-secondary">
+              Sistem pakar ini membantu melakukan konsultasi dini terhadap
+              gejala yang dirasakan ibu hamil. Menggunakan basis pengetahuan
+              (rule) dari pakar untuk memberikan diagnosis awal dan saran tindak
+              lanjut. Sistem ini bersifat pendamping, bukan pengganti
+              pemeriksaan medis.
+            </p>
+          </div>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="card h-100 shadow-sm">
+              <div class="card-body">
+                <div class="icon-badge bg-primary-subtle text-primary">
+                  <i class="bi bi-cpu"></i>
+                </div>
+                <h5 class="card-title mt-3">Basis Aturan Pakar</h5>
+                <p class="card-text text-secondary">
+                  Diagnosis awal berdasarkan aturan yang disusun oleh pakar
+                  kebidanan.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card h-100 shadow-sm">
+              <div class="card-body">
+                <div class="icon-badge bg-success-subtle text-success">
+                  <i class="bi bi-heart-pulse"></i>
+                </div>
+                <h5 class="card-title mt-3">Saran Tindak Lanjut</h5>
+                <p class="card-text text-secondary">
+                  Rekomendasi perawatan mandiri dan kapan harus ke fasilitas
+                  kesehatan.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card h-100 shadow-sm">
+              <div class="card-body">
+                <div class="icon-badge bg-warning-subtle text-warning">
+                  <i class="bi bi-shield-check"></i>
+                </div>
+                <h5 class="card-title mt-3">Aman & Mudah</h5>
+                <p class="card-text text-secondary">
+                  Antarmuka sederhana, responsif, dan siap diintegrasikan dengan
+                  backend.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Panduan -->
+    <section id="panduan" class="py-5 bg-light">
+      <div class="container">
+        <h2 class="fw-bold mb-4">Panduan Penggunaan</h2>
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="step-card">
+              <div class="step-number">1</div>
+              <h6>Registrasi & Login</h6>
+              <p class="text-secondary">
+                Buat akun sebagai pengguna, lalu masuk untuk memulai konsultasi.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="step-card">
+              <div class="step-number">2</div>
+              <h6>Pilih Gejala</h6>
+              <p class="text-secondary">
+                Centang gejala yang dirasakan dan proses untuk melihat hasil.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="step-card">
+              <div class="step-number">3</div>
+              <h6>Lihat Hasil</h6>
+              <p class="text-secondary">
+                Cermati diagnosis awal dan saran tindak lanjut dari sistem.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-4 border-top">
+      <div class="container">
+        <div class="row g-3 align-items-center">
+          <div class="col-md-6">
+            <h6 class="mb-1">Puskesmas Ponre</h6>
+            <div class="small text-secondary">
+              Alamat: Jl. Kesehatan No. 1, Ponre
+            </div>
+            <div class="small text-secondary">
+              Telepon: (0412) 123456 | Email: info@ponre.go.id
+            </div>
+          </div>
+          <div class="col-md-6 text-md-end">
+            <a href="#home" class="link-secondary small me-3">Home</a>
+            <a href="#tentang" class="link-secondary small me-3">Tentang</a>
+            <a href="#panduan" class="link-secondary small">Panduan</a>
+          </div>
+        </div>
+        <div class="small text-center text-secondary mt-3">
+          © <span id="year"></span> Puskesmas Ponre. All rights reserved.
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- icon -->
+    <link
+      rel="shortcut icon"
+      href="../assets/img/favicon.ico"
+      type="image/x-icon"
+    />
+
+    <title>Konsultasi - User</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link href="../assets/css/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row g-0">
+        <!-- Sidebar -->
+        <aside class="col-md-3 col-lg-2 sidebar">
+          <div class="sidebar-header p-3 d-flex align-items-center mb-2">
+            <img
+              src="../assets/img/logo.png"
+              alt="Logo"
+              class="logo-img me-2"
+            />
+            <span class="brand-name">SiKonsultasiBumil</span>
+          </div>
+          <div class="sidebar-menu px-2">
+            <p
+              class="sidebar-heading px-3 text-uppercase text-muted small fw-bold"
+            >
+              Menu Utama
+            </p>
+            <ul class="nav nav-pills flex-column gap-1">
+              <li class="nav-item">
+                <a class="nav-link" href="dashboard.html"
+                  ><i class="bi bi-grid me-2"></i><span>Dashboard</span></a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="konsultasi.html"
+                  ><i class="bi bi-chat-heart me-2"></i
+                  ><span>Konsultasi</span></a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="info.html"
+                  ><i class="bi bi-info-circle me-2"></i
+                  ><span>Info Sistem</span></a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="riwayat.html"
+                  ><i class="bi bi-clock-history me-2"></i
+                  ><span>Riwayat Konsultasi</span></a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="biodata.html"
+                  ><i class="bi bi-person-circle me-2"></i
+                  ><span>Biodata</span></a
+                >
+              </li>
+            </ul>
+            <p
+              class="sidebar-heading px-3 text-uppercase text-muted small fw-bold mt-4"
+            >
+              Akun
+            </p>
+            <ul class="nav nav-pills flex-column gap-1 mb-3">
+              <li class="nav-item">
+                <a class="nav-link text-danger" href="../login.html"
+                  ><i class="bi bi-box-arrow-left me-2"></i
+                  ><span>Logout</span></a
+                >
+              </li>
+            </ul>
+          </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="col-md-9 col-lg-10 main-content p-0">
+          <!-- Header -->
+          <header
+            class="header p-3 border-bottom d-flex justify-content-between align-items-center"
+          >
+            <div class="d-flex align-items-center">
+              <button
+                class="btn btn-sm btn-outline-secondary border-0 d-md-none me-2"
+                id="sidebarToggle"
+              >
+                <i class="bi bi-list"></i>
+              </button>
+              <h5 class="mb-0">Konsultasi</h5>
+            </div>
+            <div class="d-flex align-items-center gap-3">
+              <div class="dropdown">
+                <a
+                  class="btn btn-light border-0 dropdown-toggle position-relative"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <i class="bi bi-bell"></i>
+                  <span
+                    class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                    >1</span
+                  >
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end">
+                  <li><h6 class="dropdown-header">Notifikasi</h6></li>
+                  <li>
+                    <a class="dropdown-item" href="#">Tips kesehatan terbaru</a>
+                  </li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li>
+                    <a class="dropdown-item" href="#">Lihat semua notifikasi</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </header>
+
+          <!-- Content -->
+          <div class="content p-4">
+            <!-- Welcome / Info Banner -->
+            <div class="row mb-4">
+              <div class="col-12">
+                <div class="bg-primary text-white p-4 rounded-4 shadow-sm">
+                  <div class="row align-items-center">
+                    <div class="col-md-8">
+                      <h4 class="mb-1">Konsultasi Kesehatan Ibu Hamil</h4>
+                      <p class="mb-0">
+                        Pilih gejala yang Anda rasakan untuk mendapatkan
+                        analisis awal. Estimasi waktu pengisian 2–3 menit. Data
+                        Anda aman dan bersifat rahasia.
+                      </p>
+                    </div>
+                    <div
+                      class="col-md-4 text-md-end mt-3 mt-md-0 d-flex gap-2 justify-content-md-end"
+                    >
+                      <a href="info.html" class="btn btn-light">
+                        Lihat Panduan <i class="bi bi-arrow-right ms-1"></i>
+                      </a>
+                      <a href="biodata.html" class="btn btn-outline-light">
+                        Lengkapi Biodata
+                        <i class="bi bi-person-lines-fill ms-1"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <form class="needs-validation" id="konsultasiForm" novalidate>
+              <div class="row g-3">
+                <div class="col-lg-8">
+                  <div class="card shadow-sm">
+                    <div
+                      class="card-header bg-white d-flex flex-wrap gap-2 align-items-center justify-content-between"
+                    >
+                      <div class="d-flex align-items-center gap-2">
+                        <i class="bi bi-stethoscope text-primary"></i>
+                        <span class="fw-semibold">Pilih Gejala</span>
+                        <span class="badge text-bg-secondary" id="selectedCount"
+                          >0 dipilih</span
+                        >
+                      </div>
+                      <div class="d-flex align-items-center gap-2">
+                        <div class="input-group input-group-sm">
+                          <span class="input-group-text bg-white"
+                            ><i class="bi bi-search"></i
+                          ></span>
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="searchGejala"
+                            placeholder="Cari gejala..."
+                          />
+                        </div>
+                        <button
+                          class="btn btn-outline-secondary btn-sm"
+                          type="button"
+                          id="selectAllBtn"
+                        >
+                          Pilih Semua
+                        </button>
+                        <button
+                          class="btn btn-outline-secondary btn-sm"
+                          type="button"
+                          id="clearAllBtn"
+                        >
+                          Bersihkan
+                        </button>
+                      </div>
+                    </div>
+                    <div class="card-body">
+                      <div
+                        class="row row-cols-1 row-cols-md-2 g-2"
+                        id="gejalaGrid"
+                      >
+                        <div
+                          class="col symptom-item"
+                          data-name="mual berlebihan"
+                        >
+                          <input
+                            class="btn-check"
+                            type="checkbox"
+                            id="g1"
+                            autocomplete="off"
+                          />
+                          <label
+                            class="btn btn-outline-primary w-100 text-start"
+                            for="g1"
+                          >
+                            <i class="bi bi-emoji-frown me-2"></i> Mual
+                            berlebihan
+                          </label>
+                        </div>
+                        <div
+                          class="col symptom-item"
+                          data-name="muntah terus-menerus"
+                        >
+                          <input
+                            class="btn-check"
+                            type="checkbox"
+                            id="g2"
+                            autocomplete="off"
+                          />
+                          <label
+                            class="btn btn-outline-primary w-100 text-start"
+                            for="g2"
+                          >
+                            <i class="bi bi-emoji-dizzy me-2"></i> Muntah
+                            terus-menerus
+                          </label>
+                        </div>
+                        <div
+                          class="col symptom-item"
+                          data-name="pusing atau pingsan"
+                        >
+                          <input
+                            class="btn-check"
+                            type="checkbox"
+                            id="g3"
+                            autocomplete="off"
+                          />
+                          <label
+                            class="btn btn-outline-primary w-100 text-start"
+                            for="g3"
+                          >
+                            <i class="bi bi-lightning-charge me-2"></i> Pusing
+                            atau pingsan
+                          </label>
+                        </div>
+                        <div
+                          class="col symptom-item"
+                          data-name="pembengkakan kaki tangan"
+                        >
+                          <input
+                            class="btn-check"
+                            type="checkbox"
+                            id="g4"
+                            autocomplete="off"
+                          />
+                          <label
+                            class="btn btn-outline-primary w-100 text-start"
+                            for="g4"
+                          >
+                            <i class="bi bi-droplet-half me-2"></i> Pembengkakan
+                            kaki/tangan
+                          </label>
+                        </div>
+                        <div class="col symptom-item" data-name="perdarahan">
+                          <input
+                            class="btn-check"
+                            type="checkbox"
+                            id="g5"
+                            autocomplete="off"
+                          />
+                          <label
+                            class="btn btn-outline-primary w-100 text-start"
+                            for="g5"
+                          >
+                            <i class="bi bi-exclamation-triangle me-2"></i>
+                            Perdarahan
+                          </label>
+                        </div>
+                        <div
+                          class="col symptom-item"
+                          data-name="nyeri perut hebat"
+                        >
+                          <input
+                            class="btn-check"
+                            type="checkbox"
+                            id="g6"
+                            autocomplete="off"
+                          />
+                          <label
+                            class="btn btn-outline-primary w-100 text-start"
+                            for="g6"
+                          >
+                            <i class="bi bi-heart-pulse me-2"></i> Nyeri perut
+                            hebat
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                  <div class="card shadow-sm">
+                    <div class="card-header bg-white fw-semibold">
+                      Detail Gejala & Kehamilan
+                    </div>
+                    <div class="card-body">
+                      <div class="mb-3">
+                        <label class="form-label" for="lama"
+                          >Lama gejala (hari)</label
+                        >
+                        <div class="input-group">
+                          <span class="input-group-text bg-white"
+                            ><i class="bi bi-hourglass-split"></i
+                          ></span>
+                          <input
+                            type="number"
+                            min="0"
+                            id="lama"
+                            class="form-control"
+                            required
+                          />
+                        </div>
+                        <div class="invalid-feedback">Isi lama gejala.</div>
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label" for="usia-kandungan"
+                          >Usia kehamilan (minggu)</label
+                        >
+                        <div class="input-group">
+                          <span class="input-group-text bg-white"
+                            ><i class="bi bi-calendar3"></i
+                          ></span>
+                          <input
+                            type="number"
+                            min="1"
+                            max="42"
+                            id="usia-kandungan"
+                            class="form-control"
+                            required
+                          />
+                        </div>
+                        <div class="invalid-feedback">
+                          Isi usia kehamilan valid.
+                        </div>
+                      </div>
+                      <div class="small text-secondary mb-3">
+                        <i class="bi bi-shield-lock me-1"></i> Data Anda hanya
+                        digunakan untuk keperluan analisis awal.
+                      </div>
+                      <div class="d-grid">
+                        <button
+                          class="btn btn-primary"
+                          id="submitBtn"
+                          type="submit"
+                          disabled
+                        >
+                          <i class="bi bi-cpu me-2"></i> Proses Konsultasi
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </main>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const grid = document.getElementById("gejalaGrid");
+        const countEl = document.getElementById("selectedCount");
+        const search = document.getElementById("searchGejala");
+        const selectAllBtn = document.getElementById("selectAllBtn");
+        const clearAllBtn = document.getElementById("clearAllBtn");
+        const submitBtn = document.getElementById("submitBtn");
+        const usia = document.getElementById("usia-kandungan");
+        const lama = document.getElementById("lama");
+
+        const updateCount = () => {
+          const selected = grid
+            ? grid.querySelectorAll(".btn-check:checked").length
+            : 0;
+          if (countEl) countEl.textContent = `${selected} dipilih`;
+          // Enable submit if has selection and numeric inputs valid
+          const numsValid =
+            usia?.value &&
+            lama?.value &&
+            usia.checkValidity() &&
+            lama.checkValidity();
+          if (submitBtn) submitBtn.disabled = !(selected > 0 && numsValid);
+        };
+
+        grid?.addEventListener("change", (e) => {
+          if (e.target.matches(".btn-check")) updateCount();
+        });
+
+        search?.addEventListener("input", () => {
+          const q = search.value.trim().toLowerCase();
+          grid?.querySelectorAll(".symptom-item").forEach((item) => {
+            const name = item.getAttribute("data-name") || "";
+            item.style.display = name.includes(q) ? "" : "none";
+          });
+        });
+
+        selectAllBtn?.addEventListener("click", () => {
+          grid
+            ?.querySelectorAll(".btn-check")
+            .forEach((c) => (c.checked = true));
+          updateCount();
+        });
+
+        clearAllBtn?.addEventListener("click", () => {
+          grid
+            ?.querySelectorAll(".btn-check")
+            .forEach((c) => (c.checked = false));
+          updateCount();
+        });
+
+        usia?.addEventListener("input", updateCount);
+        lama?.addEventListener("input", updateCount);
+
+        updateCount();
+      });
+    </script>
+    <script src="../assets/js/script.js"></script>
+  </body>
+</html>

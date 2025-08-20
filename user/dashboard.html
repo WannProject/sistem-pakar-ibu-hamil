@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- icon -->
+    <link
+      rel="shortcut icon"
+      href="../assets/img/favicon.ico"
+      type="image/x-icon"
+    />
+
+    <title>Dashboard User - Sistem Pakar</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link href="../assets/css/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row g-0">
+        <!-- Sidebar -->
+        <aside class="col-md-3 col-lg-2 sidebar">
+          <div class="sidebar-header p-3 d-flex align-items-center mb-2">
+            <img
+              src="../assets/img/logo.png"
+              alt="Logo"
+              class="logo-img me-2"
+            />
+            <span class="brand-name">SiKonsultasiBumil</span>
+          </div>
+          <div class="sidebar-menu px-2">
+            <p
+              class="sidebar-heading px-3 text-uppercase text-muted small fw-bold"
+            >
+              Menu Utama
+            </p>
+            <ul class="nav nav-pills flex-column gap-1">
+              <li class="nav-item">
+                <a class="nav-link active" href="dashboard.html"
+                  ><i class="bi bi-grid me-2"></i><span>Dashboard</span></a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="konsultasi.html"
+                  ><i class="bi bi-chat-heart me-2"></i
+                  ><span>Konsultasi</span></a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="info.html"
+                  ><i class="bi bi-info-circle me-2"></i
+                  ><span>Info Sistem</span></a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="riwayat.html"
+                  ><i class="bi bi-clock-history me-2"></i
+                  ><span>Riwayat Konsultasi</span></a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="biodata.html"
+                  ><i class="bi bi-person-circle me-2"></i
+                  ><span>Biodata</span></a
+                >
+              </li>
+            </ul>
+            <p
+              class="sidebar-heading px-3 text-uppercase text-muted small fw-bold mt-4"
+            >
+              Akun
+            </p>
+            <ul class="nav nav-pills flex-column gap-1 mb-3">
+              <li class="nav-item">
+                <a class="nav-link text-danger" href="../login.html"
+                  ><i class="bi bi-box-arrow-left me-2"></i
+                  ><span>Logout</span></a
+                >
+              </li>
+            </ul>
+          </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="col-md-9 col-lg-10 main-content p-0">
+          <!-- Header -->
+          <header
+            class="header p-3 border-bottom d-flex justify-content-between align-items-center"
+          >
+            <div class="d-flex align-items-center">
+              <button
+                class="btn btn-sm btn-outline-secondary border-0 d-md-none me-2"
+                id="sidebarToggle"
+              >
+                <i class="bi bi-list"></i>
+              </button>
+              <h5 class="mb-0">Dashboard User</h5>
+            </div>
+            <div class="d-flex align-items-center gap-3">
+              <div class="dropdown">
+                <a
+                  class="btn btn-light border-0 dropdown-toggle position-relative"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <i class="bi bi-bell"></i>
+                  <span
+                    class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                    >1</span
+                  >
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end">
+                  <li><h6 class="dropdown-header">Notifikasi</h6></li>
+                  <li>
+                    <a class="dropdown-item" href="#"
+                      >Hasil konsultasi tersimpan</a
+                    >
+                  </li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li>
+                    <a class="dropdown-item" href="#">Lihat semua notifikasi</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </header>
+
+          <!-- Content -->
+          <div class="content p-4">
+            <div class="row mb-4">
+              <div class="col-12">
+                <div
+                  class="welcome-card bg-primary text-white p-4 rounded-4 shadow-sm"
+                >
+                  <div class="row align-items-center">
+                    <div class="col-md-8">
+                      <h4 class="mb-1">Selamat Datang di Dashboard Anda</h4>
+                      <p class="mb-0">
+                        Lakukan konsultasi untuk mendapatkan analisis awal
+                        kondisi kehamilan berdasarkan gejala yang Anda rasakan.
+                        Pantau riwayat dan hasil konsultasi, serta lengkapi
+                        biodata agar rekomendasi lebih akurat.
+                      </p>
+                    </div>
+                    <div
+                      class="col-md-4 text-md-end mt-3 mt-md-0 d-flex gap-2 justify-content-md-end"
+                    >
+                      <a href="konsultasi.html" class="btn btn-light">
+                        Mulai Konsultasi
+                        <i class="bi bi-rocket-takeoff ms-1"></i>
+                      </a>
+                      <a href="info.html" class="btn btn-outline-light">
+                        Lihat Panduan <i class="bi bi-arrow-right ms-1"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- KPIs -->
+            <div class="row g-3 mb-3">
+              <div class="col-12 col-md-6 col-xl-3">
+                <div class="card shadow-sm h-100">
+                  <div
+                    class="card-body d-flex align-items-center justify-content-between"
+                  >
+                    <div>
+                      <div class="text-secondary small">Total Konsultasi</div>
+                      <h3 class="fw-bold mb-0">2</h3>
+                      <div class="text-success small mt-1">
+                        <i class="bi bi-arrow-up-right"></i> +1 bulan ini
+                      </div>
+                    </div>
+                    <div
+                      class="rounded-circle d-flex align-items-center justify-content-center"
+                      style="
+                        width: 44px;
+                        height: 44px;
+                        background: #e7f1ff;
+                        color: #0d6efd;
+                      "
+                    >
+                      <i class="bi bi-chat-heart fs-5"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-6 col-xl-3">
+                <div class="card shadow-sm h-100">
+                  <div
+                    class="card-body d-flex align-items-center justify-content-between"
+                  >
+                    <div>
+                      <div class="text-secondary small">
+                        Konsultasi Terakhir
+                      </div>
+                      <h3 class="fw-bold mb-0">10 Agu</h3>
+                      <div class="text-secondary small mt-1">Pukul 14:20</div>
+                    </div>
+                    <div
+                      class="rounded-circle d-flex align-items-center justify-content-center"
+                      style="
+                        width: 44px;
+                        height: 44px;
+                        background: #e8f5e9;
+                        color: #16a34a;
+                      "
+                    >
+                      <i class="bi bi-calendar-check fs-5"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-6 col-xl-3">
+                <div class="card shadow-sm h-100">
+                  <div
+                    class="card-body d-flex align-items-center justify-content-between"
+                  >
+                    <div>
+                      <div class="text-secondary small">Status Biodata</div>
+                      <h3 class="fw-bold mb-0">Belum Lengkap</h3>
+                      <div class="small mt-1">
+                        <a href="biodata.html" class="text-decoration-none"
+                          >Lengkapi sekarang</a
+                        >
+                      </div>
+                    </div>
+                    <div
+                      class="rounded-circle d-flex align-items-center justify-content-center"
+                      style="
+                        width: 44px;
+                        height: 44px;
+                        background: #fff3cd;
+                        color: #f59e0b;
+                      "
+                    >
+                      <i class="bi bi-person-lines-fill fs-5"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-6 col-xl-3">
+                <div class="card shadow-sm h-100">
+                  <div
+                    class="card-body d-flex align-items-center justify-content-between"
+                  >
+                    <div>
+                      <div class="text-secondary small">Tips Hari Ini</div>
+                      <h3 class="fw-bold mb-0">Hidrasi</h3>
+                      <div class="text-secondary small mt-1">
+                        Minum air yang cukup
+                      </div>
+                    </div>
+                    <div
+                      class="rounded-circle d-flex align-items-center justify-content-center"
+                      style="
+                        width: 44px;
+                        height: 44px;
+                        background: #fee2e2;
+                        color: #ef4444;
+                      "
+                    >
+                      <i class="bi bi-heart-pulse fs-5"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Chart + Recent -->
+            <div class="row g-3">
+              <div class="col-lg-8">
+                <div class="card shadow-sm h-100">
+                  <div
+                    class="card-header bg-white d-flex justify-content-between align-items-center"
+                  >
+                    <span class="fw-semibold">Aktivitas Konsultasi</span>
+                    <div class="btn-group btn-group-sm" role="group">
+                      <button
+                        class="btn btn-outline-secondary active"
+                        data-range="7d"
+                      >
+                        7H
+                      </button>
+                      <button
+                        class="btn btn-outline-secondary"
+                        data-range="30d"
+                      >
+                        30H
+                      </button>
+                    </div>
+                  </div>
+                  <div class="card-body">
+                    <div id="userActivityChart"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="card shadow-sm h-100">
+                  <div class="card-header bg-white">
+                    <span class="fw-semibold">Riwayat Terbaru</span>
+                  </div>
+                  <div class="list-group list-group-flush">
+                    <div
+                      class="list-group-item d-flex justify-content-between align-items-center"
+                    >
+                      <div>
+                        <div class="fw-semibold">10 Agu 2025</div>
+                        <small class="text-secondary">Anemia Ringan</small>
+                      </div>
+                      <a
+                        href="hasil-konsultasi.html"
+                        class="btn btn-sm btn-outline-primary"
+                        >Detail</a
+                      >
+                    </div>
+                    <div
+                      class="list-group-item d-flex justify-content-between align-items-center"
+                    >
+                      <div>
+                        <div class="fw-semibold">01 Agu 2025</div>
+                        <small class="text-secondary">Kehamilan sehat</small>
+                      </div>
+                      <a
+                        href="hasil-konsultasi.html"
+                        class="btn btn-sm btn-outline-primary"
+                        >Detail</a
+                      >
+                    </div>
+                  </div>
+                  <div class="card-body pt-2">
+                    <a
+                      href="riwayat.html"
+                      class="btn btn-outline-secondary w-100"
+                      >Lihat semua</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Quick actions -->
+            <div class="row g-3 mt-1">
+              <div class="col-12">
+                <div class="card shadow-sm">
+                  <div class="card-body d-flex flex-wrap gap-2">
+                    <a href="konsultasi.html" class="btn btn-primary"
+                      ><i class="bi bi-chat-heart me-2"></i>Mulai Konsultasi</a
+                    >
+                    <a href="riwayat.html" class="btn btn-outline-primary"
+                      ><i class="bi bi-clock-history me-2"></i>Lihat Riwayat</a
+                    >
+                    <a href="biodata.html" class="btn btn-outline-primary"
+                      ><i class="bi bi-person-circle me-2"></i>Lengkapi
+                      Biodata</a
+                    >
+                    <a href="info.html" class="btn btn-outline-secondary"
+                      ><i class="bi bi-info-circle me-2"></i>Info Sistem</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const el = document.querySelector("#userActivityChart");
+        if (!el || !window.ApexCharts) return;
+
+        const data7 = [0, 1, 0, 0, 1, 0, 0];
+        const cats7 = ["Kam", "Jum", "Sab", "Min", "Sen", "Sel", "Rab"];
+        const data30 = [
+          0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+          0, 0, 0, 0, 0, 0, 0,
+        ];
+        const cats30 = Array.from({ length: 30 }, (_, i) => `${i - 29}`);
+
+        const options = {
+          chart: { type: "area", height: 260, toolbar: { show: false } },
+          series: [{ name: "Konsultasi", data: data7 }],
+          xaxis: {
+            categories: cats7,
+            labels: { style: { colors: "#6c757d" } },
+          },
+          yaxis: {
+            labels: { style: { colors: "#6c757d" } },
+            min: 0,
+            forceNiceScale: true,
+          },
+          colors: ["#0d6efd"],
+          dataLabels: { enabled: false },
+          stroke: { curve: "smooth", width: 2 },
+          fill: {
+            type: "gradient",
+            gradient: {
+              shadeIntensity: 1,
+              opacityFrom: 0.45,
+              opacityTo: 0.05,
+              stops: [0, 90, 100],
+            },
+          },
+          grid: { strokeDashArray: 4, borderColor: "#eee" },
+        };
+
+        const chart = new ApexCharts(el, options);
+        chart.render();
+
+        document.querySelectorAll("[data-range]").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            document
+              .querySelectorAll("[data-range]")
+              .forEach((b) => b.classList.remove("active"));
+            btn.classList.add("active");
+            const range = btn.getAttribute("data-range");
+            if (range === "30d") {
+              chart.updateOptions({
+                series: [{ data: data30 }],
+                xaxis: { categories: cats30 },
+              });
+            } else {
+              chart.updateOptions({
+                series: [{ data: data7 }],
+                xaxis: { categories: cats7 },
+              });
+            }
+          });
+        });
+      });
+    </script>
+    <script src="../assets/js/script.js"></script>
+  </body>
+</html>

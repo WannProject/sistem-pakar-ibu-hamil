@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- icon -->
+    <link
+      rel="shortcut icon"
+      href="../assets/img/favicon.ico"
+      type="image/x-icon"
+    />
+
+    <title>Kelola Rule - Pakar</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link href="../assets/css/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row g-0">
+        <!-- Sidebar -->
+        <aside class="col-md-3 col-lg-2 sidebar">
+          <div class="sidebar-header p-3 d-flex align-items-center mb-2">
+            <img
+              src="../assets/img/logo.png"
+              alt="Logo"
+              class="logo-img me-2"
+            />
+            <span class="brand-name">SiKonsultasiBumil</span>
+          </div>
+          <div class="sidebar-menu px-2">
+            <p
+              class="sidebar-heading px-3 text-uppercase text-muted small fw-bold"
+            >
+              Menu Utama
+            </p>
+            <ul class="nav nav-pills flex-column gap-1">
+              <li class="nav-item">
+                <a class="nav-link" href="dashboard.html"
+                  ><i class="bi bi-grid me-2"></i><span>Dashboard</span></a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="kelola-penyakit.html"
+                  ><i class="bi bi-bug me-2"></i><span>Kelola Penyakit</span></a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="kelola-gejala.html"
+                  ><i class="bi bi-thermometer-half me-2"></i
+                  ><span>Kelola Gejala</span></a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="kelola-rule.html"
+                  ><i class="bi bi-diagram-3 me-2"></i
+                  ><span>Kelola Rule</span></a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="riwayat-konsultasi.html"
+                  ><i class="bi bi-clock-history me-2"></i
+                  ><span>Riwayat Konsultasi</span></a
+                >
+              </li>
+            </ul>
+            <p
+              class="sidebar-heading px-3 text-uppercase text-muted small fw-bold mt-4"
+            >
+              Akun
+            </p>
+            <ul class="nav nav-pills flex-column gap-1 mb-3">
+              <li class="nav-item">
+                <a class="nav-link text-danger" href="../login.html"
+                  ><i class="bi bi-box-arrow-left me-2"></i
+                  ><span>Logout</span></a
+                >
+              </li>
+            </ul>
+          </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="col-md-9 col-lg-10 main-content p-0">
+          <!-- Header -->
+          <header
+            class="header p-3 border-bottom d-flex justify-content-between align-items-center"
+          >
+            <div class="d-flex align-items-center">
+              <button
+                class="btn btn-sm btn-outline-secondary border-0 d-md-none me-2"
+                id="sidebarToggle"
+              >
+                <i class="bi bi-list"></i>
+              </button>
+              <h5 class="mb-0">Kelola Rule</h5>
+            </div>
+            <div class="d-flex align-items-center gap-3">
+              <div class="dropdown">
+                <a
+                  class="btn btn-light border-0 dropdown-toggle position-relative"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <i class="bi bi-bell"></i>
+                  <span
+                    class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                    >3</span
+                  >
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end">
+                  <li><h6 class="dropdown-header">Notifikasi</h6></li>
+                  <li><a class="dropdown-item" href="#">Konsultasi baru</a></li>
+                  <li><a class="dropdown-item" href="#">Pertanyaan baru</a></li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li>
+                    <a class="dropdown-item" href="#">Lihat semua notifikasi</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </header>
+
+          <!-- Content -->
+          <div class="content p-4">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h4 class="mb-0">Kelola Rule (Pakar)</h4>
+              <div class="d-flex gap-2">
+                <div class="btn-group">
+                  <button
+                    class="btn btn-primary"
+                    data-bs-toggle="modal"
+                    data-bs-target="#modalRule"
+                  >
+                    <i class="bi bi-plus me-2"></i>Tambah
+                  </button>
+                  <button
+                    class="btn btn-outline-secondary dropdown-toggle"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    <i class="bi bi-download me-2"></i>Export
+                  </button>
+                  <ul class="dropdown-menu dropdown-menu-end">
+                    <li><a class="dropdown-item" href="#">CSV</a></li>
+                    <li><a class="dropdown-item" href="#">Excel</a></li>
+                    <li><hr class="dropdown-divider" /></li>
+                    <li><a class="dropdown-item" href="#">Print</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="card shadow-sm">
+              <div class="card-header bg-white">
+                <div class="row g-2 align-items-center">
+                  <div class="col-12 col-md-6">
+                    <div class="input-group input-group-sm">
+                      <span class="input-group-text bg-white"
+                        ><i class="bi bi-search"></i
+                      ></span>
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Cari rule..."
+                      />
+                    </div>
+                  </div>
+                  <div class="col-6 col-md-3 ms-auto">
+                    <select class="form-select form-select-sm">
+                      <option>10 entri</option>
+                      <option>25 entri</option>
+                      <option>50 entri</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body table-actions">
+                <div class="table-responsive">
+                  <table class="table table-hover align-middle">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>Kode Rule</th>
+                        <th>IF (Gejala)</th>
+                        <th>THEN (Penyakit)</th>
+                        <th>Aksi</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>1</td>
+                        <td>R01</td>
+                        <td>G01 AND G02</td>
+                        <td>P01</td>
+                        <td>
+                          <button
+                            class="btn btn-sm btn-outline-secondary"
+                            data-bs-toggle="modal"
+                            data-bs-target="#modalEditRule"
+                            data-tooltip-title="Edit"
+                            aria-label="Edit"
+                          >
+                            <i class="bi bi-pencil"></i>
+                          </button>
+                          <button
+                            class="btn btn-sm btn-outline-danger"
+                            data-bs-toggle="modal"
+                            data-bs-target="#confirmDeleteRule"
+                            data-tooltip-title="Hapus"
+                            aria-label="Hapus"
+                          >
+                            <i class="bi bi-trash"></i>
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div
+                  class="d-flex justify-content-between align-items-center mt-3"
+                >
+                  <small class="text-secondary"
+                    >Menampilkan 1 dari 1 entri</small
+                  >
+                  <nav aria-label="Pagination">
+                    <ul class="pagination pagination-sm mb-0">
+                      <li class="page-item disabled">
+                        <span class="page-link">Prev</span>
+                      </li>
+                      <li class="page-item active" aria-current="page">
+                        <span class="page-link">1</span>
+                      </li>
+                      <li class="page-item disabled">
+                        <span class="page-link">Next</span>
+                      </li>
+                    </ul>
+                  </nav>
+                </div>
+              </div>
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="modalRule" tabindex="-1">
+              <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">Tambah Rule</h5>
+                    <button class="btn-close" data-bs-dismiss="modal"></button>
+                  </div>
+                  <div class="modal-body">
+                    <form class="row g-3 needs-validation" novalidate>
+                      <div class="col-md-4">
+                        <label class="form-label">Kode Rule</label>
+                        <input class="form-control" required />
+                      </div>
+                      <div class="col-md-8">
+                        <label class="form-label">IF (Gejala)</label>
+                        <input
+                          class="form-control"
+                          placeholder="Contoh: G01 AND G02"
+                          required
+                        />
+                      </div>
+                      <div class="col-12">
+                        <label class="form-label">THEN (Penyakit)</label>
+                        <input
+                          class="form-control"
+                          placeholder="Contoh: P01"
+                          required
+                        />
+                      </div>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button class="btn btn-secondary" data-bs-dismiss="modal">
+                      Batal
+                    </button>
+                    <button class="btn btn-primary" data-bs-dismiss="modal">
+                      Simpan
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Edit Modal -->
+            <div class="modal fade" id="modalEditRule" tabindex="-1">
+              <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">Edit Rule</h5>
+                    <button class="btn-close" data-bs-dismiss="modal"></button>
+                  </div>
+                  <div class="modal-body">
+                    <form class="row g-3 needs-validation" novalidate>
+                      <div class="col-md-4">
+                        <label class="form-label">Kode Rule</label>
+                        <input class="form-control" value="R01" required />
+                      </div>
+                      <div class="col-md-8">
+                        <label class="form-label">IF (Gejala)</label>
+                        <input
+                          class="form-control"
+                          value="G01 AND G02"
+                          required
+                        />
+                      </div>
+                      <div class="col-12">
+                        <label class="form-label">THEN (Penyakit)</label>
+                        <input class="form-control" value="P01" required />
+                      </div>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button class="btn btn-secondary" data-bs-dismiss="modal">
+                      Batal
+                    </button>
+                    <button class="btn btn-primary" data-bs-dismiss="modal">
+                      Simpan Perubahan
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Confirm Delete Modal -->
+            <div
+              class="modal fade"
+              id="confirmDeleteRule"
+              tabindex="-1"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">Hapus Data</h5>
+                    <button class="btn-close" data-bs-dismiss="modal"></button>
+                  </div>
+                  <div class="modal-body">
+                    Apakah Anda yakin ingin menghapus data rule ini? Tindakan
+                    ini tidak dapat dibatalkan.
+                  </div>
+                  <div class="modal-footer">
+                    <button class="btn btn-secondary" data-bs-dismiss="modal">
+                      Batal
+                    </button>
+                    <button class="btn btn-danger" data-bs-dismiss="modal">
+                      Hapus
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/script.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const triggers = Array.from(
+          document.querySelectorAll(
+            '[data-tooltip-title], [data-bs-toggle="tooltip"]'
+          )
+        );
+        triggers.forEach((el) => {
+          if (
+            el.hasAttribute("data-tooltip-title") &&
+            !el.hasAttribute("title")
+          ) {
+            el.setAttribute("title", el.getAttribute("data-tooltip-title"));
+          }
+          new bootstrap.Tooltip(el);
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- icon -->
+    <link
+      rel="shortcut icon"
+      href="../assets/img/favicon.ico"
+      type="image/x-icon"
+    />
+
+    <title>Info Sistem - User</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link href="../assets/css/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row g-0">
+        <!-- Sidebar -->
+        <aside class="col-md-3 col-lg-2 sidebar">
+          <div class="sidebar-header p-3 d-flex align-items-center mb-2">
+            <img
+              src="../assets/img/logo.png"
+              alt="Logo"
+              class="logo-img me-2"
+            />
+            <span class="brand-name">SiKonsultasiBumil</span>
+          </div>
+          <div class="sidebar-menu px-2">
+            <p
+              class="sidebar-heading px-3 text-uppercase text-muted small fw-bold"
+            >
+              Menu Utama
+            </p>
+            <ul class="nav nav-pills flex-column gap-1">
+              <li class="nav-item">
+                <a class="nav-link" href="dashboard.html"
+                  ><i class="bi bi-grid me-2"></i><span>Dashboard</span></a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="konsultasi.html"
+                  ><i class="bi bi-chat-heart me-2"></i
+                  ><span>Konsultasi</span></a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="info.html"
+                  ><i class="bi bi-info-circle me-2"></i
+                  ><span>Info Sistem</span></a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="riwayat.html"
+                  ><i class="bi bi-clock-history me-2"></i
+                  ><span>Riwayat Konsultasi</span></a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="biodata.html"
+                  ><i class="bi bi-person-circle me-2"></i
+                  ><span>Biodata</span></a
+                >
+              </li>
+            </ul>
+            <p
+              class="sidebar-heading px-3 text-uppercase text-muted small fw-bold mt-4"
+            >
+              Akun
+            </p>
+            <ul class="nav nav-pills flex-column gap-1 mb-3">
+              <li class="nav-item">
+                <a class="nav-link text-danger" href="../login.html"
+                  ><i class="bi bi-box-arrow-left me-2"></i
+                  ><span>Logout</span></a
+                >
+              </li>
+            </ul>
+          </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="col-md-9 col-lg-10 main-content p-0">
+          <!-- Header -->
+          <header
+            class="header p-3 border-bottom d-flex justify-content-between align-items-center"
+          >
+            <div class="d-flex align-items-center">
+              <button
+                class="btn btn-sm btn-outline-secondary border-0 d-md-none me-2"
+                id="sidebarToggle"
+              >
+                <i class="bi bi-list"></i>
+              </button>
+              <h5 class="mb-0">Info Sistem</h5>
+            </div>
+            <div class="d-flex align-items-center gap-3">
+              <div class="dropdown">
+                <a
+                  class="btn btn-light border-0 dropdown-toggle position-relative"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <i class="bi bi-bell"></i>
+                  <span
+                    class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                    >1</span
+                  >
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end">
+                  <li><h6 class="dropdown-header">Notifikasi</h6></li>
+                  <li>
+                    <a class="dropdown-item" href="#">Informasi terbaru</a>
+                  </li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li>
+                    <a class="dropdown-item" href="#">Lihat semua notifikasi</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </header>
+
+          <!-- Content -->
+          <div class="content p-4">
+            <!-- Key Info Cards -->
+            <div class="row g-3 mb-4">
+              <div class="col-12 col-md-4">
+                <div class="card shadow-sm h-100">
+                  <div class="card-body d-flex gap-3 align-items-start">
+                    <div
+                      class="rounded-circle d-flex align-items-center justify-content-center"
+                      style="
+                        width: 44px;
+                        height: 44px;
+                        background: #e7f1ff;
+                        color: #0d6efd;
+                      "
+                    >
+                      <i class="bi bi-diagram-3 fs-5"></i>
+                    </div>
+                    <div>
+                      <div class="fw-semibold">Metode</div>
+                      <div class="text-secondary small">
+                        Rule-based inference (IF–THEN) disusun oleh pakar
+                        kebidanan.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-4">
+                <div class="card shadow-sm h-100">
+                  <div class="card-body d-flex gap-3 align-items-start">
+                    <div
+                      class="rounded-circle d-flex align-items-center justify-content-center"
+                      style="
+                        width: 44px;
+                        height: 44px;
+                        background: #e8f5e9;
+                        color: #16a34a;
+                      "
+                    >
+                      <i class="bi bi-bullseye fs-5"></i>
+                    </div>
+                    <div>
+                      <div class="fw-semibold">Tujuan</div>
+                      <div class="text-secondary small">
+                        Screening dini dan edukasi, tidak menggantikan
+                        konsultasi dokter.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-4">
+                <div class="card shadow-sm h-100">
+                  <div class="card-body d-flex gap-3 align-items-start">
+                    <div
+                      class="rounded-circle d-flex align-items-center justify-content-center"
+                      style="
+                        width: 44px;
+                        height: 44px;
+                        background: #fff3cd;
+                        color: #f59e0b;
+                      "
+                    >
+                      <i class="bi bi-shield-lock fs-5"></i>
+                    </div>
+                    <div>
+                      <div class="fw-semibold">Privasi</div>
+                      <div class="text-secondary small">
+                        Data dijaga sesuai kebijakan Puskesmas Ponre dan hanya
+                        untuk analisis.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- How-to and FAQ -->
+            <div class="row g-3">
+              <div class="col-lg-6">
+                <div class="card shadow-sm h-100">
+                  <div class="card-header bg-white fw-semibold">
+                    Cara Menggunakan
+                  </div>
+                  <div class="card-body">
+                    <ol class="mb-0">
+                      <li>
+                        Pergi ke halaman Konsultasi dan pilih gejala yang
+                        dirasakan.
+                      </li>
+                      <li>Isi lama gejala dan usia kehamilan dengan benar.</li>
+                      <li>
+                        Kirim form untuk melihat hasil analisis awal dan saran.
+                      </li>
+                    </ol>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="card shadow-sm h-100">
+                  <div class="card-header bg-white fw-semibold">
+                    FAQ Singkat
+                  </div>
+                  <div class="card-body">
+                    <div class="accordion" id="faqInfo">
+                      <div class="accordion-item">
+                        <h2 class="accordion-header" id="faq1h">
+                          <button
+                            class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#faq1"
+                            aria-expanded="false"
+                            aria-controls="faq1"
+                          >
+                            Apakah hasil konsultasi adalah diagnosis akhir?
+                          </button>
+                        </h2>
+                        <div
+                          id="faq1"
+                          class="accordion-collapse collapse"
+                          aria-labelledby="faq1h"
+                          data-bs-parent="#faqInfo"
+                        >
+                          <div class="accordion-body">
+                            Bukan. Hasil bersifat rekomendasi awal. Selalu
+                            konsultasikan dengan tenaga kesehatan.
+                          </div>
+                        </div>
+                      </div>
+                      <div class="accordion-item">
+                        <h2 class="accordion-header" id="faq2h">
+                          <button
+                            class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#faq2"
+                            aria-expanded="false"
+                            aria-controls="faq2"
+                          >
+                            Bagaimana data saya digunakan?
+                          </button>
+                        </h2>
+                        <div
+                          id="faq2"
+                          class="accordion-collapse collapse"
+                          aria-labelledby="faq2h"
+                          data-bs-parent="#faqInfo"
+                        >
+                          <div class="accordion-body">
+                            Data digunakan untuk memproses analisis dan
+                            peningkatan kualitas layanan, sesuai kebijakan
+                            privasi.
+                          </div>
+                        </div>
+                      </div>
+                      <div class="accordion-item">
+                        <h2 class="accordion-header" id="faq3h">
+                          <button
+                            class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#faq3"
+                            aria-expanded="false"
+                            aria-controls="faq3"
+                          >
+                            Apa langkah selanjutnya setelah hasil keluar?
+                          </button>
+                        </h2>
+                        <div
+                          id="faq3"
+                          class="accordion-collapse collapse"
+                          aria-labelledby="faq3h"
+                          data-bs-parent="#faqInfo"
+                        >
+                          <div class="accordion-body">
+                            Ikuti saran yang diberikan dan hubungi tenaga
+                            kesehatan bila gejala berlanjut atau memburuk.
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <p class="text-secondary small mt-3 mb-0">
+              Catatan: Informasi pada sistem ini tidak dimaksudkan untuk keadaan
+              darurat. Jika terjadi kondisi gawat darurat, segera hubungi
+              fasilitas kesehatan terdekat.
+            </p>
+          </div>
+        </main>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/script.js"></script>
+  </body>
+</html>

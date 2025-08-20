@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- icon -->
+    <link
+      rel="shortcut icon"
+      href="../assets/img/favicon.ico"
+      type="image/x-icon"
+    />
+
+    <title>Kelola Gejala - Pakar</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link href="../assets/css/style.css" rel="stylesheet" />
+    <style>
+      /* Refinements halaman gejala */
+      .table-sticky thead th {
+        position: sticky;
+        top: 0;
+        background: #fff;
+        z-index: 1;
+      }
+      .btn-icon {
+        padding: 0.25rem 0.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row g-0">
+        <!-- Sidebar -->
+        <aside class="col-md-3 col-lg-2 sidebar">
+          <div class="sidebar-header p-3 d-flex align-items-center mb-2">
+            <img
+              src="../assets/img/logo.png"
+              alt="Logo"
+              class="logo-img me-2"
+            />
+            <span class="brand-name">SiKonsultasiBumil</span>
+          </div>
+          <div class="sidebar-menu px-2">
+            <p
+              class="sidebar-heading px-3 text-uppercase text-muted small fw-bold"
+            >
+              Menu Utama
+            </p>
+            <ul class="nav nav-pills flex-column gap-1">
+              <li class="nav-item">
+                <a class="nav-link" href="dashboard.html"
+                  ><i class="bi bi-grid me-2"></i><span>Dashboard</span></a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="kelola-penyakit.html"
+                  ><i class="bi bi-bug me-2"></i><span>Kelola Penyakit</span></a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="kelola-gejala.html"
+                  ><i class="bi bi-thermometer-half me-2"></i
+                  ><span>Kelola Gejala</span></a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="kelola-rule.html"
+                  ><i class="bi bi-diagram-3 me-2"></i
+                  ><span>Kelola Rule</span></a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="riwayat-konsultasi.html"
+                  ><i class="bi bi-clock-history me-2"></i
+                  ><span>Riwayat Konsultasi</span></a
+                >
+              </li>
+            </ul>
+            <p
+              class="sidebar-heading px-3 text-uppercase text-muted small fw-bold mt-4"
+            >
+              Akun
+            </p>
+            <ul class="nav nav-pills flex-column gap-1 mb-3">
+              <li class="nav-item">
+                <a class="nav-link text-danger" href="../login.html"
+                  ><i class="bi bi-box-arrow-left me-2"></i
+                  ><span>Logout</span></a
+                >
+              </li>
+            </ul>
+          </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="col-md-9 col-lg-10 main-content p-0">
+          <!-- Header -->
+          <header
+            class="header p-3 border-bottom d-flex justify-content-between align-items-center"
+          >
+            <div class="d-flex align-items-center">
+              <button
+                class="btn btn-sm btn-outline-secondary border-0 d-md-none me-2"
+                id="sidebarToggle"
+              >
+                <i class="bi bi-list"></i>
+              </button>
+              <h5 class="mb-0">Kelola Gejala</h5>
+            </div>
+            <div class="d-flex align-items-center gap-3">
+              <div class="dropdown">
+                <a
+                  class="btn btn-light border-0 dropdown-toggle position-relative"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <i class="bi bi-bell"></i>
+                  <span
+                    class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                    >3</span
+                  >
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end">
+                  <li><h6 class="dropdown-header">Notifikasi</h6></li>
+                  <li><a class="dropdown-item" href="#">Konsultasi baru</a></li>
+                  <li><a class="dropdown-item" href="#">Pertanyaan baru</a></li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li>
+                    <a class="dropdown-item" href="#">Lihat semua notifikasi</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </header>
+
+          <!-- Content -->
+          <div class="content p-4">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h4 class="mb-0">Kelola Gejala (Pakar)</h4>
+              <div class="d-flex gap-2">
+                <div class="btn-group">
+                  <button
+                    class="btn btn-primary"
+                    data-bs-toggle="modal"
+                    data-bs-target="#modalGejala"
+                  >
+                    <i class="bi bi-plus me-2"></i>Tambah
+                  </button>
+                  <button
+                    class="btn btn-outline-secondary dropdown-toggle"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    <i class="bi bi-download me-2"></i>Export
+                  </button>
+                  <ul class="dropdown-menu dropdown-menu-end">
+                    <li><a class="dropdown-item" href="#">CSV</a></li>
+                    <li><a class="dropdown-item" href="#">Excel</a></li>
+                    <li><hr class="dropdown-divider" /></li>
+                    <li><a class="dropdown-item" href="#">Print</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="card shadow-sm">
+              <div class="card-header bg-white">
+                <div class="row g-2 align-items-center">
+                  <div class="col-12 col-md-6">
+                    <div class="input-group input-group-sm">
+                      <span class="input-group-text bg-white"
+                        ><i class="bi bi-search"></i
+                      ></span>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="searchGejala"
+                        placeholder="Cari gejala..."
+                        aria-label="Cari gejala"
+                      />
+                      <button
+                        class="btn btn-outline-secondary"
+                        type="button"
+                        id="clearSearchGejala"
+                        title="Bersihkan pencarian"
+                      >
+                        <i class="bi bi-x-lg"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="col-6 col-md-3 ms-auto">
+                    <select class="form-select form-select-sm">
+                      <option>10 entri</option>
+                      <option>25 entri</option>
+                      <option>50 entri</option>
+                    </select>
+                  </div>
+                  <div class="col-auto d-none d-md-block">
+                    <button
+                      class="btn btn-outline-danger btn-sm"
+                      id="bulkDeleteGejalaBtn"
+                      disabled
+                    >
+                      <i class="bi bi-trash me-1"></i> Hapus Terpilih
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body table-actions">
+                <div class="table-responsive">
+                  <table
+                    class="table table-striped table-hover table-sm align-middle table-sticky"
+                  >
+                    <thead>
+                      <tr>
+                        <th style="width: 36px">
+                          <input
+                            class="form-check-input"
+                            type="checkbox"
+                            id="selectAllGejala"
+                            aria-label="Pilih semua"
+                          />
+                        </th>
+                        <th>#</th>
+                        <th>Kode</th>
+                        <th>Nama Gejala</th>
+                        <th>Aksi</th>
+                      </tr>
+                    </thead>
+                    <tbody id="gejalaTableBody">
+                      <tr>
+                        <td>
+                          <input
+                            class="form-check-input row-select"
+                            type="checkbox"
+                            aria-label="Pilih baris"
+                          />
+                        </td>
+                        <td>1</td>
+                        <td>
+                          <span
+                            class="badge text-bg-light border font-monospace small"
+                            >G01</span
+                          >
+                        </td>
+                        <td>Mual</td>
+                        <td>
+                          <button
+                            class="btn btn-sm btn-outline-secondary btn-icon"
+                            data-bs-toggle="modal"
+                            data-bs-target="#modalEditGejala"
+                            data-tooltip-title="Edit"
+                            aria-label="Edit"
+                          >
+                            <i class="bi bi-pencil"></i>
+                          </button>
+                          <button
+                            class="btn btn-sm btn-outline-danger btn-icon"
+                            data-bs-toggle="modal"
+                            data-bs-target="#confirmDeleteGejala"
+                            data-tooltip-title="Hapus"
+                            aria-label="Hapus"
+                          >
+                            <i class="bi bi-trash"></i>
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div
+                  class="d-flex justify-content-between align-items-center mt-3"
+                >
+                  <small class="text-secondary" id="gejalaEntriesInfo"
+                    >Menampilkan 1 dari 1 entri</small
+                  >
+                  <nav aria-label="Pagination">
+                    <ul class="pagination pagination-sm mb-0">
+                      <li class="page-item disabled">
+                        <span class="page-link">Prev</span>
+                      </li>
+                      <li class="page-item active" aria-current="page">
+                        <span class="page-link">1</span>
+                      </li>
+                      <li class="page-item disabled">
+                        <span class="page-link">Next</span>
+                      </li>
+                    </ul>
+                  </nav>
+                </div>
+              </div>
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="modalGejala" tabindex="-1">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">Tambah Gejala</h5>
+                    <button class="btn-close" data-bs-dismiss="modal"></button>
+                  </div>
+                  <div class="modal-body">
+                    <form class="row g-3 needs-validation" novalidate>
+                      <div class="col-md-4">
+                        <label class="form-label">Kode</label>
+                        <div class="input-group">
+                          <span class="input-group-text"
+                            ><i class="bi bi-hash"></i
+                          ></span>
+                          <input
+                            class="form-control"
+                            placeholder="Mis. G01"
+                            required
+                          />
+                        </div>
+                      </div>
+                      <div class="col-md-8">
+                        <label class="form-label">Nama Gejala</label>
+                        <div class="input-group">
+                          <span class="input-group-text"
+                            ><i class="bi bi-thermometer-half"></i
+                          ></span>
+                          <input
+                            class="form-control"
+                            placeholder="Mis. Mual"
+                            required
+                          />
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button class="btn btn-secondary" data-bs-dismiss="modal">
+                      Batal
+                    </button>
+                    <button class="btn btn-primary" data-bs-dismiss="modal">
+                      Simpan
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Edit Modal -->
+            <div class="modal fade" id="modalEditGejala" tabindex="-1">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">Edit Gejala</h5>
+                    <button class="btn-close" data-bs-dismiss="modal"></button>
+                  </div>
+                  <div class="modal-body">
+                    <form class="row g-3 needs-validation" novalidate>
+                      <div class="col-md-4">
+                        <label class="form-label">Kode</label>
+                        <div class="input-group">
+                          <span class="input-group-text"
+                            ><i class="bi bi-hash"></i
+                          ></span>
+                          <input class="form-control" value="G01" required />
+                        </div>
+                      </div>
+                      <div class="col-md-8">
+                        <label class="form-label">Nama Gejala</label>
+                        <div class="input-group">
+                          <span class="input-group-text"
+                            ><i class="bi bi-thermometer-half"></i
+                          ></span>
+                          <input class="form-control" value="Mual" required />
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button class="btn btn-secondary" data-bs-dismiss="modal">
+                      Batal
+                    </button>
+                    <button class="btn btn-primary" data-bs-dismiss="modal">
+                      Simpan Perubahan
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Confirm Delete Modal -->
+            <div
+              class="modal fade"
+              id="confirmDeleteGejala"
+              tabindex="-1"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">Hapus Data</h5>
+                    <button class="btn-close" data-bs-dismiss="modal"></button>
+                  </div>
+                  <div class="modal-body" id="confirmDeleteGejalaText">
+                    Apakah Anda yakin ingin menghapus data gejala ini? Tindakan
+                    ini tidak dapat dibatalkan.
+                  </div>
+                  <div class="modal-footer">
+                    <button class="btn btn-secondary" data-bs-dismiss="modal">
+                      Batal
+                    </button>
+                    <button class="btn btn-danger" data-bs-dismiss="modal">
+                      Hapus
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/script.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Tooltips
+        const triggers = Array.from(
+          document.querySelectorAll(
+            '[data-tooltip-title], [data-bs-toggle="tooltip"]'
+          )
+        );
+        triggers.forEach((el) => {
+          if (
+            el.hasAttribute("data-tooltip-title") &&
+            !el.hasAttribute("title")
+          ) {
+            el.setAttribute("title", el.getAttribute("data-tooltip-title"));
+          }
+          new bootstrap.Tooltip(el);
+        });
+
+        // Elemen dasar
+        const search = document.getElementById("searchGejala");
+        const clearBtn = document.getElementById("clearSearchGejala");
+        const tbody = document.getElementById("gejalaTableBody");
+        const entriesInfo = document.getElementById("gejalaEntriesInfo");
+        const selectAll = document.getElementById("selectAllGejala");
+        const bulkDeleteBtn = document.getElementById("bulkDeleteGejalaBtn");
+        let lastDeleteContext = null;
+
+        const getRows = () => Array.from(tbody?.querySelectorAll("tr") || []);
+        const isVisible = (tr) => tr.style.display !== "none";
+
+        const ensureEmptyState = () => {
+          const rows = getRows();
+          const total = rows.length;
+          const visible = rows.filter(isVisible).length;
+          const empty = tbody?.querySelector("tr.empty-row");
+          if (empty) empty.remove();
+          if (total > 0 && visible === 0 && tbody) {
+            const tr = document.createElement("tr");
+            tr.className = "empty-row";
+            const td = document.createElement("td");
+            td.colSpan = 5;
+            td.className = "text-center text-muted py-4";
+            td.innerHTML =
+              '<i class="bi bi-inboxes"></i> Tidak ada data yang cocok.';
+            tr.appendChild(td);
+            tbody.appendChild(tr);
+          }
+        };
+
+        const updateEntriesText = () => {
+          if (!entriesInfo) return;
+          const rows = getRows();
+          const total = rows.filter(
+            (tr) => !tr.classList.contains("empty-row")
+          ).length;
+          const visible = rows.filter(
+            (tr) => !tr.classList.contains("empty-row") && isVisible(tr)
+          ).length;
+          entriesInfo.textContent = `Menampilkan ${visible} dari ${total} entri`;
+        };
+
+        const updateSelectAllState = () => {
+          if (!selectAll) return;
+          const visibleRows = getRows().filter(
+            (tr) => !tr.classList.contains("empty-row") && isVisible(tr)
+          );
+          const allCount = visibleRows.length;
+          const checkedCount = visibleRows.filter(
+            (tr) => tr.querySelector(".row-select")?.checked
+          ).length;
+          selectAll.checked = allCount > 0 && checkedCount === allCount;
+          selectAll.indeterminate = checkedCount > 0 && checkedCount < allCount;
+        };
+
+        const updateBulkBtn = () => {
+          const selected = tbody
+            ? tbody.querySelectorAll(".row-select:checked").length
+            : 0;
+          if (bulkDeleteBtn) {
+            bulkDeleteBtn.disabled = selected === 0;
+            bulkDeleteBtn.innerHTML = `<i class="bi bi-trash me-1"></i> Hapus Terpilih${
+              selected ? ` (${selected})` : ""
+            }`;
+          }
+        };
+
+        const applyFilter = () => {
+          const q = (search?.value || "").toLowerCase();
+          getRows().forEach((tr) => {
+            if (tr.classList.contains("empty-row")) return;
+            const text = tr.innerText.toLowerCase();
+            tr.style.display = text.includes(q) ? "" : "none";
+          });
+          ensureEmptyState();
+          updateEntriesText();
+          updateSelectAllState();
+          updateBulkBtn();
+        };
+
+        search?.addEventListener("input", applyFilter);
+        clearBtn?.addEventListener("click", () => {
+          if (search) {
+            search.value = "";
+            applyFilter();
+            search.focus();
+          }
+        });
+
+        selectAll?.addEventListener("change", () => {
+          const visibleRows = getRows().filter(
+            (tr) => !tr.classList.contains("empty-row") && isVisible(tr)
+          );
+          visibleRows.forEach((tr) => {
+            const cb = tr.querySelector(".row-select");
+            if (cb) cb.checked = selectAll.checked;
+          });
+          updateSelectAllState();
+          updateBulkBtn();
+        });
+
+        tbody?.addEventListener("change", (e) => {
+          if (e.target && e.target.classList.contains("row-select")) {
+            updateSelectAllState();
+            updateBulkBtn();
+          }
+        });
+
+        // Context untuk hapus
+        document
+          .querySelectorAll('button[data-bs-target="#confirmDeleteGejala"]')
+          .forEach((btn) => {
+            btn.addEventListener("click", () => {
+              const tr = btn.closest("tr");
+              if (tr) {
+                const code =
+                  tr.querySelector("td:nth-child(3)")?.innerText.trim() || "";
+                const name =
+                  tr.querySelector("td:nth-child(4)")?.innerText.trim() || "";
+                lastDeleteContext = { type: "single", code, name };
+              }
+            });
+          });
+
+        bulkDeleteBtn?.addEventListener("click", () => {
+          const selected = tbody
+            ? Array.from(tbody.querySelectorAll(".row-select:checked")).length
+            : 0;
+          lastDeleteContext = { type: "bulk", count: selected };
+          const modal = document.getElementById("confirmDeleteGejala");
+          if (modal) new bootstrap.Modal(modal).show();
+        });
+
+        const confirmModal = document.getElementById("confirmDeleteGejala");
+        confirmModal?.addEventListener("show.bs.modal", () => {
+          const el = document.getElementById("confirmDeleteGejalaText");
+          if (!el) return;
+          if (!lastDeleteContext) {
+            el.textContent =
+              "Apakah Anda yakin ingin menghapus data gejala ini? Tindakan ini tidak dapat dibatalkan.";
+            return;
+          }
+          if (lastDeleteContext.type === "bulk") {
+            const n = lastDeleteContext.count || 0;
+            el.textContent =
+              n > 1
+                ? `Anda akan menghapus ${n} gejala terpilih. Tindakan ini tidak dapat dibatalkan.`
+                : "Anda akan menghapus 1 gejala terpilih. Tindakan ini tidak dapat dibatalkan.";
+          } else if (lastDeleteContext.type === "single") {
+            el.textContent = `Anda akan menghapus ${lastDeleteContext.code} - ${lastDeleteContext.name}. Tindakan ini tidak dapat dibatalkan.`;
+          }
+        });
+
+        // Init awal
+        applyFilter();
+      });
+    </script>
+  </body>
+</html>
