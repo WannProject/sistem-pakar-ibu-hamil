@@ -271,6 +271,11 @@
               Jawab sesuai kondisi Anda saat ini. Anda bisa kembali ke
               pertanyaan sebelumnya.
             </div>
+            <div
+              class="small text-secondary mt-2"
+              id="gejalaHint"
+              style="display: none"
+            ></div>
           </div>
           <div class="modal-footer d-flex justify-content-between">
             <button
@@ -309,20 +314,50 @@
 
         // Daftar gejala (urutan pertanyaan)
         const symptoms = [
-          { id: "g1", label: "Mual berlebihan", icon: "bi-emoji-frown" },
-          { id: "g2", label: "Muntah terus-menerus", icon: "bi-emoji-dizzy" },
+          {
+            id: "g1",
+            label: "Mual berlebihan",
+            icon: "bi-emoji-frown",
+            question: "Apakah Anda sedang mengalami mual berlebihan?",
+            hint: "Mual terasa kuat dan mengganggu aktivitas, terutama pada pagi hari.",
+          },
+          {
+            id: "g2",
+            label: "Muntah terus-menerus",
+            icon: "bi-emoji-dizzy",
+            question:
+              "Apakah Anda muntah terus-menerus hari ini atau beberapa hari terakhir?",
+            hint: "Muntah lebih dari 3 kali dalam sehari atau sulit menahan makanan/minuman.",
+          },
           {
             id: "g3",
             label: "Pusing atau pingsan",
             icon: "bi-lightning-charge",
+            question: "Apakah Anda sering merasa pusing atau sempat pingsan?",
+            hint: "Kepala terasa ringan/berkunang-kunang saat berdiri atau beraktivitas.",
           },
           {
             id: "g4",
             label: "Pembengkakan kaki/tangan",
             icon: "bi-droplet-half",
+            question:
+              "Apakah kaki atau tangan Anda terlihat bengkak tidak biasa?",
+            hint: "Bengkak menetap, terutama di pergelangan kaki/jari, bukan hanya setelah berdiri lama.",
           },
-          { id: "g5", label: "Perdarahan", icon: "bi-exclamation-triangle" },
-          { id: "g6", label: "Nyeri perut hebat", icon: "bi-heart-pulse" },
+          {
+            id: "g5",
+            label: "Perdarahan",
+            icon: "bi-exclamation-triangle",
+            question: "Apakah Anda mengalami perdarahan dari jalan lahir?",
+            hint: "Darah merah muda/merah kecoklatan dari vagina, sedikit sampai banyak.",
+          },
+          {
+            id: "g6",
+            label: "Nyeri perut hebat",
+            icon: "bi-heart-pulse",
+            question: "Apakah Anda merasakan nyeri perut yang kuat atau hebat?",
+            hint: "Nyeri menusuk/menarik kuat, tidak hilang dengan istirahat.",
+          },
         ];
 
         // Jawaban: { id: true|false }
@@ -360,6 +395,7 @@
         const modalEl = document.getElementById("gejalaModal");
         let modal;
         const qTitle = () => document.getElementById("gejalaQuestion");
+        const qHint = () => document.getElementById("gejalaHint");
         const qProg = () => document.getElementById("gejalaProgress");
         const btnPrev = () => document.getElementById("gejalaPrev");
         const btnYes = () => document.getElementById("gejalaYes");
@@ -368,7 +404,19 @@
         const renderStep = () => {
           const step = symptoms[idx];
           if (!step) return;
-          qTitle().innerHTML = `<i class="bi ${step.icon} me-2"></i> ${step.label}`;
+          const title =
+            step.question ||
+            `Apakah Anda mengalami ${step.label.toLowerCase()}?`;
+          qTitle().innerHTML = `<i class="bi ${step.icon} me-2"></i> ${title}`;
+          if (qHint()) {
+            if (step.hint) {
+              qHint().style.display = "";
+              qHint().innerHTML = `<i class="bi bi-info-circle me-1"></i> ${step.hint}`;
+            } else {
+              qHint().style.display = "none";
+              qHint().innerHTML = "";
+            }
+          }
           qProg().textContent = `${idx + 1} / ${symptoms.length}`;
           // Prev tombol aktif jika bukan langkah pertama
           btnPrev().disabled = idx === 0;
