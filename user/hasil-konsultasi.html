@@ -128,13 +128,33 @@
           </header>
 
           <!-- Content -->
-          <div class="content p-4">
+          <div class="content p-4" id="hasilContent">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <div>
+                <h5 class="mb-0">Ringkasan Hasil Konsultasi</h5>
+                <small class="text-secondary">Dokumen ini dapat diunduh sebagai PDF.</small>
+              </div>
+              <button class="btn btn-danger" id="downloadPdfBtn">
+                <i class="bi bi-file-earmark-pdf me-1"></i> Download PDF
+              </button>
+            </div>
             <div class="row g-3">
               <div class="col-lg-8">
                 <div class="card shadow-sm">
                   <div class="card-body">
+                    <h6 class="fw-bold mb-3">Ringkasan Pasien</h6>
+                    <div class="row g-2 small">
+                      <div class="col-md-6"><span class="text-secondary">Nama Ibu:</span> <span id="patientName">-</span></div>
+                      <div class="col-md-6"><span class="text-secondary">Usia Kehamilan:</span> <span id="gestAge">-</span></div>
+                      <div class="col-md-6"><span class="text-secondary">Tanggal Konsultasi:</span> <span id="consultDate">-</span></div>
+                      <div class="col-md-6"><span class="text-secondary">No. Rekam Medis:</span> <span id="noRm">-</span></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card shadow-sm">
+                  <div class="card-body">
                     <h5 class="fw-bold">Diagnosis Awal</h5>
-                    <p class="text-secondary">Kemungkinan: Anemia Ringan</p>
+                    <p class="text-secondary mb-2">Kemungkinan: <span id="diagnosisName">-</span> <span class="badge text-bg-warning ms-1" id="diagnosisConfidence">-</span></p>
                     <div class="alert alert-info mb-0">
                       Catatan: Ini adalah hasil simulasi statis untuk tujuan UI.
                       Integrasi backend akan memberikan hasil aktual berdasarkan
@@ -142,16 +162,18 @@
                     </div>
                   </div>
                 </div>
+                <div class="card shadow-sm">
+                  <div class="card-body">
+                    <h6 class="fw-bold">Gejala Terkonfirmasi</h6>
+                    <ul id="symptomsList" class="mb-0"></ul>
+                  </div>
+                </div>
               </div>
               <div class="col-lg-4">
                 <div class="card shadow-sm">
                   <div class="card-body">
                     <h6 class="fw-bold">Saran</h6>
-                    <ul class="mb-0">
-                      <li>Perbanyak asupan zat besi.</li>
-                      <li>Istirahat cukup.</li>
-                      <li>Periksa ke puskesmas bila gejala berat.</li>
-                    </ul>
+                    <ul class="mb-0" id="adviceList"></ul>
                   </div>
                 </div>
               </div>
@@ -161,6 +183,87 @@
       </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html2pdf.js@0.10.1/dist/html2pdf.bundle.min.js"></script>
     <script src="../assets/js/script.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        // Data dummy (fallback bila tidak ada data dari halaman konsultasi)
+        const dummy = {
+          patient: { name: 'Ibu Siti Aisyah', gestationalWeeks: 24, noRm: 'RM-00123' },
+          consultAt: new Date(),
+          symptoms: ['Mual berlebihan', 'Pusing atau pingsan'],
+          diagnosis: { name: 'Anemia Ringan', confidence: 0.72 },
+          advice: [
+            'Perbanyak asupan zat besi',
+            'Istirahat cukup',
+            'Periksa ke puskesmas bila gejala berat'
+          ]
+        };
+
+        // Ambil data dari localStorage jika ada (mis. diset halaman konsultasi), jika tidak pakai dummy
+        let data;
+        try {
+          data = JSON.parse(localStorage.getItem('hasilKonsultasi') || 'null') || dummy;
+        } catch (_) { data = dummy; }
+
+        // Render ke UI
+        const setText = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
+        setText('patientName', data.patient?.name || '-');
+        setText('gestAge', data.patient?.gestationalWeeks ? `${data.patient.gestationalWeeks} minggu` : '-');
+        setText('noRm', data.patient?.noRm || '-');
+        const d = data.consultAt ? new Date(data.consultAt) : new Date();
+        setText('consultDate', d.toLocaleString());
+        setText('diagnosisName', data.diagnosis?.name || '-');
+        const conf = data.diagnosis?.confidence;
+        setText('diagnosisConfidence', (typeof conf === 'number') ? `${Math.round(conf * 100)}%` : '-');
+
+        const symWrap = document.getElementById('symptomsList');
+        if (symWrap) {
+          symWrap.innerHTML = '';
+          (data.symptoms || []).forEach((s) => {
+            const li = document.createElement('li');
+            li.textContent = s;
+            symWrap.appendChild(li);
+          });
+          if (!symWrap.children.length) {
+            const li = document.createElement('li');
+            li.className = 'text-secondary';
+            li.textContent = 'Tidak ada gejala terkonfirmasi.';
+            symWrap.appendChild(li);
+          }
+        }
+
+        const advWrap = document.getElementById('adviceList');
+        if (advWrap) {
+          advWrap.innerHTML = '';
+          (data.advice || []).forEach((a) => {
+            const li = document.createElement('li');
+            li.textContent = a;
+            advWrap.appendChild(li);
+          });
+        }
+
+        // PDF export
+        const btn = document.getElementById('downloadPdfBtn');
+        const target = document.getElementById('hasilContent');
+        btn?.addEventListener('click', () => {
+          if (!target) return;
+          const now = new Date();
+          const pad = (n) => String(n).padStart(2, '0');
+          const filename = `Hasil-Konsultasi-${now.getFullYear()}${pad(now.getMonth()+1)}${pad(now.getDate())}-${pad(now.getHours())}${pad(now.getMinutes())}.pdf`;
+          const opt = {
+            margin: [10, 10, 10, 10],
+            filename,
+            image: { type: 'jpeg', quality: 0.98 },
+            html2canvas: { scale: 2, useCORS: true },
+            jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+            pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+          };
+          html2pdf().from(target).set(opt).save();
+        });
+      });
+    </script>
+      });
+    </script>
   </body>
 </html>
