@@ -184,8 +184,7 @@
                           type="button"
                           id="startGejalaBtn"
                         >
-                          <i class="bi bi-ui-checks me-1"></i> Mulai Tanya
-                          Gejala
+                          <i class="bi bi-ui-checks me-1"></i> Mulai Konsultasi
                         </button>
                       </div>
                     </div>
@@ -223,6 +222,27 @@
                         </div>
                         <div class="invalid-feedback">Isi lama gejala.</div>
                       </div>
+                      <div class="mb-3">
+                        <label class="form-label" for="usia-kandungan"
+                          >Usia kehamilan (minggu)</label
+                        >
+                        <div class="input-group">
+                          <span class="input-group-text bg-white"
+                            ><i class="bi bi-calendar3"></i
+                          ></span>
+                          <input
+                            type="number"
+                            min="1"
+                            max="42"
+                            id="usia-kandungan"
+                            class="form-control"
+                            required
+                          />
+                        </div>
+                        <div class="invalid-feedback">
+                          Isi usia kehamilan valid.
+                        </div>
+                      </div>
                       <div class="small text-secondary mb-3">
                         <i class="bi bi-shield-lock me-1"></i> Data Anda hanya
                         digunakan untuk keperluan analisis awal.
@@ -246,6 +266,7 @@
         </main>
       </div>
     </div>
+
     <!-- Modal Tanya Gejala (Ya/Tidak) -->
     <div class="modal fade" id="gejalaModal" tabindex="-1" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
@@ -310,6 +331,7 @@
         const summaryEl = document.getElementById("selectedSummary");
         const submitBtn = document.getElementById("submitBtn");
         const lama = document.getElementById("lama");
+        const usia = document.getElementById("usia-kandungan");
         const startBtn = document.getElementById("startGejalaBtn");
 
         // Daftar gejala (urutan pertanyaan)
@@ -387,7 +409,11 @@
                   .join(" ");
             }
           }
-          const numsValid = lama?.value && lama.checkValidity();
+          const numsValid =
+            lama?.value &&
+            lama.checkValidity() &&
+            usia?.value &&
+            usia.checkValidity();
           if (submitBtn) submitBtn.disabled = !(selected > 0 && numsValid);
         };
 
@@ -463,6 +489,7 @@
         modalEl?.addEventListener("hidden.bs.modal", updateUI);
 
         lama?.addEventListener("input", updateUI);
+        usia?.addEventListener("input", updateUI);
         updateUI();
       });
     </script>
